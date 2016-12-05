@@ -1,11 +1,11 @@
 angular.module('app.ingredients', [])
 .controller('IngredientsController', function($scope, $http) {
-  
-  delete $http.defaults.headers.common['X-Requested-With'];
-  $scope.findRecipes = function(query) {
+    
+    $scope.findRecipes = function(query) {
     // disabling to limit query usage
 /*    var key = window.F2F_API_KEY;
     var q = $scope.inputFood;
+    $scope.recipes = [];
     return $http({
       method: 'GET', 
       dataType: 'json',
@@ -15,14 +15,31 @@ angular.module('app.ingredients', [])
       },
     })
     .then(function(res) {
-      $scope.recipes = res.recipes;
+      $scope.recipes = res.data.recipes;
     }, function(err) {
-      console.log(err);*/
+      console.log(err);
+    });*/
     $scope.recipes = exampleData.recipes;
   }
 
   $scope.saveForLater = function(context) {
-    console.log('saving', context.recipe.title);
-    console.log('with url', context.recipe.source_url);
+    console.log('clicked on', context.recipe);
+    var recipe = {
+      name: context.recipe.title,
+      image_url: context.recipe.image_url,
+      url: context.recipe.source_url,
+    }
+    return $http({
+      method: 'POST',
+      dataType: 'json',
+      data: recipe,
+      url: 'http://localhost:1337/addRecipe',
+    })
+    .then(function(res) {
+
+    }, function(err) {
+      console.log(err);
+    });
   }
+
 });

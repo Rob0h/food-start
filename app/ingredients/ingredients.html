@@ -1,10 +1,16 @@
+<div>
+  <a href='#/'>Home</a>
+  <a href='#/recipes'>Recipes</a>
+
 <form ng-submit='findRecipes()' name='locInputForm'>
   <input ng-model='inputFood' class='text' type='text' placeholder='Enter Ingredients' required>
   <input type='submit' value='Go!' ng-disabled='!locInputForm.$valid'>
 </form>
 
 <div class='recipe' ng-repeat='recipe in recipes'>
-  <p>{{recipe.title}}</p>
+  <p><a href={{recipe.f2f_url}}>{{recipe.title}}</a></p>
   <img src={{recipe.image_url}}></img>
   <input ng-click='saveForLater(this)' type='submit' value='Save for Later'></input>
 </div>
+
+<div>

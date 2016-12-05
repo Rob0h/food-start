@@ -1,7 +1,9 @@
 var express = require('express');
 var app = express();
 var morgan = require('morgan');
+var mongoose = require('mongoose');
 
+mongoose.connect('mongodb://localhost/recipes');
 
 require('./requesthandler.js')(app, express);
 app.use(morgan('dev'));

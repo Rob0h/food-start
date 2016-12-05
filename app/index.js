@@ -7,5 +7,9 @@ angular.module('app', ['app.ingredients', 'ngRoute'])
     .when('/', {
       templateUrl: 'app/ingredients/ingredients.html',
       controller: 'IngredientsController',
+    })
+    .when('/recipes', {
+      templateUrl: 'app/recipes/recipes.html',
+      controller: 'RecipesController',
     });
 });
