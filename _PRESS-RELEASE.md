@@ -18,27 +18,37 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  foodStart
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  People who don't know how to cook 
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  Allows you to search for new recipes and recipes based on available ingredients
 
 ## Problem ##
   > Describe the problem your product solves.
+  Gives recipe ideas for people who are bad at cooking
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  Input ingredients into your fridge and the app will make a query to food2fork for recipes
+  Recipes can be saved for later use
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+  "Make food fast"
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+  EZ
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  "#blessed"
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+  outside

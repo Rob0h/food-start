@@ -1,0 +1,25 @@
+{
+  "name": "foodstart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rob0h/hrsf51-mvp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rob0h/hrsf51-mvp/issues"
+  },
+  "homepage": "https://github.com/Rob0h/hrsf51-mvp#readme",
+  "dependencies": {
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.1",
+    "morgan": "^1.7.0"
+  }
+}

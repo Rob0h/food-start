@@ -1,0 +1,1 @@
+window.F2F_API_KEY = '582cb61e55be53bc0e54978560324746';

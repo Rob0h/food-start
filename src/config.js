@@ -1,0 +1,1 @@
+window.GMap = {key: 'AIzaSyCA-Jl3awY6NWedMUb6_Ey6DzRphlPtJjw'};

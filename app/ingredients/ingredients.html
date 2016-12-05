@@ -1,0 +1,10 @@
+<form ng-submit='findRecipes()' name='locInputForm'>
+  <input ng-model='inputFood' class='text' type='text' placeholder='Enter Ingredients' required>
+  <input type='submit' value='Go!' ng-disabled='!locInputForm.$valid'>
+</form>
+
+<div class='recipe' ng-repeat='recipe in recipes'>
+  <p>{{recipe.title}}</p>
+  <img src={{recipe.image_url}}></img>
+  <input ng-click='saveForLater(this)' type='submit' value='Save for Later'></input>
+</div>
