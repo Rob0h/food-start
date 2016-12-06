@@ -9,7 +9,7 @@ appNavBar.directive("navBar", function() {
     controller: "navBarCtrl",
   }});
 
-appNavBar.controller('navBarCtrl', function($scope) {
+appNavBar.controller('navBarCtrl', function($scope, $location) {
   $scope.redAlert = false;
   $scope.greenAlert = false;
 
@@ -28,14 +28,18 @@ appNavBar.controller('navBarCtrl', function($scope) {
   $scope.removeGreenAlert = function() {
     $scope.greenAlert = false;
   }
+
+  // non-ideal implementation
+  $scope.isActive = function (viewLocation) {
+     var active = (viewLocation === $location.path());
+     return active;
+  };
 });
 
-
-
-//???????????????????????????????
-/*appNavBar.directive('bsActiveLink', ['$location', function ($location) {
+appNavBar.directive('bsActiveLink', ['$location', function ($location) {
   return {
     restrict: 'A', //use as attribute 
+    scope: true,
     replace: false,
     link: function (scope, elem) {
         //after the route has changed
@@ -55,4 +59,3 @@ appNavBar.controller('navBarCtrl', function($scope) {
     }
   }
 }]);
-*/
