@@ -1,10 +1,13 @@
 <nav-bar></nav-bar>
 
 <div id='content'>
-  <form ng-submit='findRecipes()' name='locInputForm'>
-    <input ng-model='inputFood' class='text' type='text' placeholder='Search Recipes' required>
-    <input type='submit' value='Go!' ng-disabled='!locInputForm.$valid'>
-  </form>
+  <div class='form-group'>
+    <label>Search for recipes here</label>
+    <form ng-submit='findRecipes()' name='locInputForm'>
+      <input ng-model='inputFood' class='form-control' type='text' placeholder='Search Recipes' required>
+      <input type='submit' value='Go!' ng-disabled='!locInputForm.$valid' class='btn btn-default'>
+    </form>
+  </div>
 
   <div class='recipe' ng-repeat='recipe in recipes'>
     <p><a href={{recipe.f2f_url}}>{{recipe.title}}</a></p>
