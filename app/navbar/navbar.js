@@ -9,7 +9,7 @@ appNavBar.directive("navBar", function() {
     controller: "navBarCtrl",
   }});
 
-appNavBar.controller('navBarCtrl', function($scope, $location) {
+appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
   $scope.redAlert = false;
   $scope.greenAlert = false;
 
@@ -24,13 +24,21 @@ appNavBar.controller('navBarCtrl', function($scope, $location) {
   }
 
   $scope.signUpUser = function() {
-    console.log($scope.username);
-    console.log($scope.password);
-    if($scope.username !== 'asdf' || $scope.password !== 'asdf') {
-      $scope.redAlert = true;
-    } else {
-      $scope.greenAlert = true;
+    // password being saved in plain text
+    var newUser = {
+      username: $scope.username,
+      password: $scope.password,
     }
+    return $http({
+      method: 'POST',
+      dataType: 'json',
+      data: newUser,
+      url: 'http://localhost:1337/login'
+    }).then(function(res) {
+      if (res.status === 200) {
+        console.log('user saved successfully');
+      }
+    })
   }
 
   $scope.removeRedAlert = function() {

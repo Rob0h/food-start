@@ -61,6 +61,7 @@ module.exports = function(app, express) {
   app.post('/login', function(req, res) {
     usersController.addUser(req.body)
     .then(function(result) {
+      console.log(result);
       res.send(result);
     });
   })
