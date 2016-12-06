@@ -13,7 +13,7 @@ angular.module('app.search', [])
   $scope.recipes = homeData.recipes;
 
 
-  $scope.saveForLater = function(event, context) {
+  $scope.saveLater = function(context) {
     console.log('clicked on', context);
     var recipe = {
       title: context.recipe.title,

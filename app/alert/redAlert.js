@@ -7,3 +7,4 @@ appRedAlert.directive("redAlert", function() {
     templateUrl: "/app/alert/redAlert.html",
   }
 });
+
