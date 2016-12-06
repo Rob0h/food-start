@@ -14,9 +14,9 @@
       <li data-ng-repeat='recipe in recipes' class='grid'>
         <a href={{recipe.f2f_url}}>{{recipe.title}}</a>
         <img class='grid-img' src={{recipe.image_url}}></img>
-        <form name='test'>
-          <input ng-click='saveForLater($event, this)' type='submit' value='Save for Later' name='saveRecipe'></input>
-          <span ng-show='test.$submitted'>Recipe Saved Successfully</span>  
+        <form name='saveForLater'>
+          <input ng-click='saveForLater($event, this)' type='submit' value='Save Recipe' name='saveRecipe' class='btn btn-default btn-xs'></input>
+          <span ng-show='saveForLater.$submitted'>Recipe Saved Successfully</span>  
         </form>
       </li>
     </ul>

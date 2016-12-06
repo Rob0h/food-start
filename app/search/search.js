@@ -1,39 +1,20 @@
 angular.module('app.search', [])
-.controller('SearchController', function($scope, $http) {
+.controller('SearchController', function($scope, $http, recipeFactory) {
 
   $scope.findRecipes = function() {
-    // disabling to limit query usage
-/*    var key = window.F2F_API_KEY;
-    var q = $scope.inputFood;
-    var url = 'https://community-food2fork.p.mashape.com/search?key=' + key;
-    if (q !== undefined) {
-      url = url + '&q=' + q;
-    }
-
-    $scope.recipes = [];
-
-    return $http({
-      method: 'GET', 
-      dataType: 'json',
-      url: url,
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-      },
-    })
-    .then(function(res) {
-      $scope.recipes = res.data.recipes;
-    }, function(err) {
-      console.log(err);
-    });*/
-
-    $scope.recipes = exampleData.recipes;
+    recipeFactory.findRecipes($scope.inputFood)
+    .then(function(recipes) {
+      $scope.recipes = recipes;
+    });
+    
+    //STATIC DATA REMOVE
+    //$scope.recipes = exampleData.recipes;
   }
 
-  //fill front page with recommended
+  //STATIC DATA REMOVE
   //$scope.findRecipes();
-  $scope.recipes = homeData.recipes;
+  //$scope.recipes = homeData.recipes;
 
-  $scope.show = true;
 
   $scope.saveForLater = function(event, context) {
     console.log('clicked on', context);

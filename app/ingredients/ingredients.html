@@ -3,25 +3,46 @@
 <div id='content'>
   <div class='form-group'>
     <label>Add your fridge contents</label>
-    <form ng-submit='findIngredient()' name='locInputForm'>
-      <input ng-model='inputIngredient' class='form-control' type='text' placeholder='Add Ingredients' required>
-      <input type='submit' value='Go!' ng-disabled='!locInputForm.$valid' class='btn btn-default'>
+    <form ng-submit='findIngredient()' name='ingInputForm'>
+      <input ng-model='inputIngredient' class='form-control' type='text' placeholder='Add Ingredients' id='inputIngredient' required>
+      <input type='submit' value='Add to Fridge!' ng-disabled='!ingInputForm.$valid' class='btn btn-default'>
+    </form>
+    <form ng-submit='findFridgeRecipe()' id='findFridgeRecipe' name='findFridgeRecipeForm'>
+      <input type='submit' value='Find me Recipes!' class='btn btn-default'>
     </form>
   </div>
 
-  <div ng-model='searchedIngredient' ng-show='locInputForm.$submitted'>
+  <div ng-model='searchedIngredient' ng-show='ingInputForm.$submitted'>
     <p>{{searchedIngredient.snippet}}</p>
     <img src={{searchedIngredient.link}}></img>
     <input type='submit' ng-click='addIngredient()' value='Store in Fridge' name='saveIngredient'></input>
   </div>
 
-  
+  <div class="page-header">
+    <h1>My Fridge</h1>
+  </div>
   <div id='fridge'>
-    <ul class='dynamic-grid' angular-grid='fridge' ag-grid-width='300' ag-gutter-size='10' ag-id='gallery' ag-refresh-on-img-load='false'>
+    <ul class='dynamic-grid' angular-grid='fridge' ag-grid-width='100' ag-gutter-size='10' ag-id='gallery' ag-refresh-on-img-load='false'>
       <li data-ng-repeat='ingredient in fridge' class='grid'>
         <p>{{ingredient.snippet}}</p>
         <img class='grid-img' src={{ingredient.link}}></img>
         <input type='submit' ng-click='removeIngredient(this)' value='Remove from fridge' name='saveIngredient'></input>
+      </li>
+    </ul>
+  </div>
+
+  <div ng-show='findFridgeRecipeForm.$submitted' class='page-header'>
+    <h1>Suggested Recipes</h1>
+  </div>
+  <div id='recipeContainer'>
+    <ul class='dynamic-grid' angular-grid='recipes' ag-grid-width='300' ag-gutter-size='10' ag-id='gallery' ag-refresh-on-img-load='false'>
+      <li data-ng-repeat='recipe in recipes' class='grid'>
+        <a href={{recipe.f2f_url}}>{{recipe.title}}</a>
+        <img class='grid-img' src={{recipe.image_url}}></img>
+        <form name='saveForLater'>
+          <input ng-click='saveForLater($event, this)' type='submit' value='Save Recipe' name='saveRecipe' class='btn btn-default btn-xs'></input>
+          <span ng-show='saveForLater.$submitted'>Recipe Saved Successfully</span>  
+        </form>
       </li>
     </ul>
   </div>

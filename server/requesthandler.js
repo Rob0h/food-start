@@ -4,6 +4,7 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var recipesController = require('./recipes/recipesController.js')
 var ingredientsController = require('./ingredients/ingredientsController.js')
+var usersController = require('./users/usersController.js');
 
 module.exports = function(app, express) {
   // test if this is still needed
@@ -34,7 +35,7 @@ module.exports = function(app, express) {
     .then(function(result){
       res.send(result);
     });
-  })
+  });
 
   // ingredient logic
   app.post('/addToFridge', function(req, res) {
@@ -54,5 +55,13 @@ module.exports = function(app, express) {
     .then(function(result){
       res.send(result);
     })
+  });
+
+  // user logic
+  app.post('/login', function(req, res) {
+    usersController.addUser(req.body)
+    .then(function(result) {
+      res.send(result);
+    });
   })
 }

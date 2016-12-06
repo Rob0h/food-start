@@ -1,5 +1,5 @@
 angular.module('app.ingredients', [])
-.controller('IngredientsController', function($scope, $http) {
+.controller('IngredientsController', function($scope, $http, recipeFactory) {
   $scope.searchedIngredient = null;
 
   $scope.findIngredient = function() {
@@ -11,7 +11,10 @@ angular.module('app.ingredients', [])
     })
     .then(function(res) {
       console.log(res);
-      $scope.searchedIngredient = res.data.items[0];
+      $scope.searchedIngredient = {
+        snippet: $scope.inputIngredient,
+        link: res.data.items[0].link,
+      }
     })
   }
 
@@ -23,6 +26,7 @@ angular.module('app.ingredients', [])
     })
     .then(function(res) {
       $scope.fridge = res.data;
+      console.log($scope.fridge);
     });
   }
 
@@ -30,7 +34,7 @@ angular.module('app.ingredients', [])
 
   $scope.addIngredient = function() {
     var newIngredient = {
-      snippet: $scope.searchedIngredient.snippet,
+      snippet: $scope.inputIngredient,
       link: $scope.searchedIngredient.link,
     }
     return $http({
@@ -40,7 +44,6 @@ angular.module('app.ingredients', [])
       data: newIngredient,
     })
     .then(function(res) {
-      console.log(res);
       $scope.getFridge();
     });
   }
@@ -57,5 +60,19 @@ angular.module('app.ingredients', [])
     }, function(err) {
       console.log(err);
     });
+  }
+
+  $scope.findFridgeRecipe = function() {
+    var joinedFridgeString = '';
+    $scope.fridge.forEach(function(ingredient, i) {
+      if (i !== 0) {
+        joinedFridgeString += ', ';
+      }
+      joinedFridgeString += ingredient.snippet;
+    });
+    recipeFactory.findRecipes(joinedFridgeString)
+    .then(function(recipes) {
+      $scope.recipes = recipes;
+    })
   }
 });
