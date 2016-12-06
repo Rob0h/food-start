@@ -8,7 +8,7 @@ module.exports = {
       f2f_url: recipe.f2f_url,
       image_url: recipe.image_url,
     });
-    newRecipe.save()
+    return newRecipe.save()
     .then(function(res) {
       console.log('New Recipe has been saved!');
     });
@@ -17,7 +17,6 @@ module.exports = {
   getRecipes: function(req, res) {
     Recipe.find()
     .then(function(found) {
-      console.log(found);
       res.send(found);
     });
   },

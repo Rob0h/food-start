@@ -11,8 +11,12 @@
 <div class='recipe' ng-repeat='recipe in recipes'>
   <p><a href={{recipe.f2f_url}}>{{recipe.title}}</a></p>
   <img src={{recipe.image_url}}></img>
-  <input ng-click='saveForLater($event, this)' type='submit' value='Save for Later' name='saveRecipe'></input>
-  <span ng-show='show'>hi :3</span>
+  
+  <form name='test'>
+    <input ng-click='saveForLater($event, this)' type='submit' value='Save for Later' name='saveRecipe'></input>
+  </form>
+  <span ng-show='test.$submitted'>Recipe Saved Successfully</span>
+  
 </div>
 
 <div>

@@ -3,6 +3,7 @@ var http = require('http');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var recipesController = require('./recipes/recipesController.js')
+var ingredientsController = require('./ingredients/ingredientsController.js')
 
 module.exports = function(app, express) {
   // test if this is still needed
@@ -10,14 +11,16 @@ module.exports = function(app, express) {
 
   app.use(bodyParser.json());
 
+  // static file serving
   app.use('/app', express.static(path.join(__dirname, '..', '/app')));
   app.use('/lib', express.static(path.join(__dirname, '..', '/lib')));
-
   app.get('/', function(req, res) {
     res.sendFile('index.html', {root: __dirname + '/../app'});
   });
+
+  // recipe logic
   app.post('/addRecipe', function(req, res) {
-    console.log(req.body);
+    console.log('adding recipe');
     recipesController.addRecipe(req.body);
   });
   app.get('/getRecipes', function(req, res) {
@@ -30,5 +33,25 @@ module.exports = function(app, express) {
     .then(function(result){
       res.send(result);
     });
+  })
+
+  // ingredient logic
+  app.post('/addToFridge', function(req, res) {
+    console.log('adding to fridge');
+    ingredientsController.addIngredient(req.body)
+    .then(function(result){
+      res.send(result);
+    });
+  });
+  app.get('/getFridge', function(req, res) {
+    console.log('stocking fridge');
+    ingredientsController.getFridge(res, res);
+  });
+  app.post('/removeFromFridge', function(req, res) {
+    console.log('removing ingredient');
+    ingredientsController.removeFromFridge(req.body)
+    .then(function(result){
+      res.send(result);
+    })
   })
 }

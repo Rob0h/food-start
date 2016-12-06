@@ -36,9 +36,7 @@ angular.module('app.search', [])
   $scope.show = true;
 
   $scope.saveForLater = function(event, context) {
-    $(event.target).parent().css('display', 'none');
     console.log('clicked on', context);
-    console.log(context.element);
     var recipe = {
       title: context.recipe.title,
       f2f_url: context.recipe.f2f_url,
@@ -51,11 +49,17 @@ angular.module('app.search', [])
       url: 'http://localhost:1337/addRecipe',
     })
     .then(function(res) {
-
+      console.log('getting here');
+      $scope.show = !$scope.show;
     }, function(err) {
       console.log(err);
     });
   }
 
+  $scope.test = function(context) {
+    console.log(context);
+    console.log(context.$parent.show);
+    $scope.show = !$scope.show;
+  }
 
 });

@@ -3,16 +3,24 @@
   <a href='#/recipes'>Recipes</a>
   <a href='#/ingredients'>Ingredients</a>
 
-<form ng-submit='findRecipes()' name='locInputForm'>
-  <input ng-model='inputFood' class='text' type='text' placeholder='Search Recipes' required>
-  <input type='submit' value='Go!' ng-disabled='!locInputForm.$valid'>
-</form>
+  <form ng-submit='findIngredient()' name='locInputForm'>
+    <input ng-model='inputIngredient' class='text' type='text' placeholder='Add Ingredients' required>
+    <input type='submit' value='Go!' ng-disabled='!locInputForm.$valid'>
+  </form>
 
-<div class='recipe' ng-repeat='recipe in recipes'>
-  <p><a href={{recipe.f2f_url}}>{{recipe.title}}</a></p>
-  <img src={{recipe.image_url}}></img>
-  <input ng-click='saveForLater($event, this)' type='submit' value='Save for Later' name='saveRecipe'></input>
-  <span ng-show='show'>hi :3</span>
+  <div ng-model='searchedIngredient' ng-show='locInputForm.$submitted'>
+    <p>{{searchedIngredient.snippet}}</p>
+    <img src={{searchedIngredient.link}}></img>
+    <input type='submit' ng-click='addIngredient()' value='Store in Fridge' name='saveIngredient'></input>
+  </div>
+
+  
+  <div id='fridge'>
+    <h3>KEEP YO FRIDGE STOCKED (^o^)</h3>
+    <div ng-repeat='ingredient in fridge'>
+      <p>{{ingredient.snippet}}</p>
+      <img src={{ingredient.link}}></img>
+      <input type='submit' ng-click='removeIngredient(this)' value='Take it Out!' name='saveIngredient'></input>
+    </div>
+  </div>
 </div>
-
-<div>
