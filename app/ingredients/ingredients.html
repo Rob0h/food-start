@@ -1,8 +1,6 @@
-<div>
-  <a href='#/'>Home</a>
-  <a href='#/recipes'>Recipes</a>
-  <a href='#/ingredients'>Ingredients</a>
+<nav-bar></nav-bar>
 
+<div id='content'>
   <form ng-submit='findIngredient()' name='locInputForm'>
     <input ng-model='inputIngredient' class='text' type='text' placeholder='Add Ingredients' required>
     <input type='submit' value='Go!' ng-disabled='!locInputForm.$valid'>

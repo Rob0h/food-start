@@ -1,9 +1,6 @@
-<div>
-  <a href='#/'>Home</a>
-  <a href='#/recipes'>Recipes</a>
-  <a href='#/ingredients'>Ingredients</a>
-  
-  <h1>(^o^)</h1>
+<nav-bar></nav-bar>
+
+<div id='content'>
   <div class='recipe' ng-repeat='recipe in storedRecipes'>
     <p><a href={{recipe.f2f_url}}>{{recipe.title}}</a></p>
     <img src={{recipe.image_url}}></img>
