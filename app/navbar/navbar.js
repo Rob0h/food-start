@@ -41,8 +41,8 @@ appNavBar.controller('navBarCtrl', function($scope, $location) {
   }
 
   // non-ideal implementation
-/*  $scope.isActive = function (viewLocation) {
+  $scope.isActive = function (viewLocation) {
      var active = (viewLocation === $location.path());
      return active;
-  };*/
+  };
 });
