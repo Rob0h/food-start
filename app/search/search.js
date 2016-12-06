@@ -1,15 +1,21 @@
-angular.module('app.ingredients', [])
-.controller('IngredientsController', function($scope, $http) {
-    
-    $scope.findRecipes = function(query) {
+angular.module('app.search', [])
+.controller('SearchController', function($scope, $http) {
+
+  $scope.findRecipes = function() {
     // disabling to limit query usage
 /*    var key = window.F2F_API_KEY;
     var q = $scope.inputFood;
+    var url = 'https://community-food2fork.p.mashape.com/search?key=' + key;
+    if (q !== undefined) {
+      url = url + '&q=' + q;
+    }
+
     $scope.recipes = [];
+
     return $http({
       method: 'GET', 
       dataType: 'json',
-      url: 'https://community-food2fork.p.mashape.com/search?key=' + key + '&q=' + q,
+      url: url,
       headers: {
         'Content-Type': 'application/json; charset=utf-8'
       },
@@ -19,15 +25,20 @@ angular.module('app.ingredients', [])
     }, function(err) {
       console.log(err);
     });*/
+
     $scope.recipes = exampleData.recipes;
   }
+
+  //fill front page with recommended
+  //$scope.findRecipes();
+  $scope.recipes = homeData.recipes;
 
   $scope.saveForLater = function(context) {
     console.log('clicked on', context.recipe);
     var recipe = {
-      name: context.recipe.title,
+      title: context.recipe.title,
+      f2f_url: context.recipe.f2f_url,
       image_url: context.recipe.image_url,
-      url: context.recipe.source_url,
     }
     return $http({
       method: 'POST',
@@ -41,5 +52,6 @@ angular.module('app.ingredients', [])
       console.log(err);
     });
   }
+
 
 });

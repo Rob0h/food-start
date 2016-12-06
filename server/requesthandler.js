@@ -23,5 +23,12 @@ module.exports = function(app, express) {
   app.get('/getRecipes', function(req, res) {
     console.log('retrieving recipes');
     recipesController.getRecipes(req, res);
+  });
+  app.post('/removeRecipe', function(req, res) {
+    console.log('removing recipe');
+    recipesController.removeRecipe(req.body)
+    .then(function(result){
+      res.send(result);
+    });
   })
 }

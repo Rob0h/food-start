@@ -1,5 +1,10 @@
 <div>
   <a href='#/'>Home</a>
   <a href='#/recipes'>Recipes</a>
-  <h1>(^_^)</h1>
+  <h1>(^o^)</h1>
+  <div class='recipe' ng-repeat='recipe in storedRecipes'>
+    <p><a href={{recipe.f2f_url}}>{{recipe.title}}</a></p>
+    <img src={{recipe.image_url}}></img>
+    <input ng-click='removeFromList(this)' type='submit' value='Remove'></input>
+  </div>
 </div>
