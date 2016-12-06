@@ -11,15 +11,22 @@ appNavBar.directive("navBar", function() {
 
 appNavBar.controller('navBarCtrl', function($scope) {
   $scope.redAlert = false;
+  $scope.greenAlert = false;
+
   $scope.login = function() {
     console.log($scope.username);
     console.log($scope.password);
-    if($scope.username !== 'asdf' && $scope.password !== 'asdf') {
+    if($scope.username !== 'asdf' || $scope.password !== 'asdf') {
       $scope.redAlert = true;
+    } else {
+      $scope.greenAlert = true;
     }
   }
-  $scope.removeAlert = function() {
+  $scope.removeRedAlert = function() {
     $scope.redAlert = false;
+  }
+  $scope.removeGreenAlert = function() {
+    $scope.greenAlert = false;
   }
 });
 
