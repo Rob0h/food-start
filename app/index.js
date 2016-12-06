@@ -1,4 +1,4 @@
-angular.module('app', ['app.search', 'app.recipes', 'ngRoute'])
+angular.module('app', ['app.search', 'app.recipes', 'app.ingredients', 'ngRoute'])
 .config(function ($routeProvider, $httpProvider) {
   
   $httpProvider.defaults.headers.get = {'X-Mashape-Key': '4dGJ75wfGZmshHg96g2LjUoaqEsDp1cw7H3jsnG5dMs7RxDBa6'};
@@ -11,5 +11,9 @@ angular.module('app', ['app.search', 'app.recipes', 'ngRoute'])
     .when('/recipes', {
       templateUrl: 'app/recipes/recipes.html',
       controller: 'RecipesController',
+    })
+    .when('/ingredients', {
+      templateUrl: 'app/ingredients/ingredients.html',
+      controller: 'IngredientsController',
     });
 });

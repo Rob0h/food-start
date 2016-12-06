@@ -33,8 +33,12 @@ angular.module('app.search', [])
   //$scope.findRecipes();
   $scope.recipes = homeData.recipes;
 
-  $scope.saveForLater = function(context) {
-    console.log('clicked on', context.recipe);
+  $scope.show = true;
+
+  $scope.saveForLater = function(event, context) {
+    $(event.target).parent().css('display', 'none');
+    console.log('clicked on', context);
+    console.log(context.element);
     var recipe = {
       title: context.recipe.title,
       f2f_url: context.recipe.f2f_url,
