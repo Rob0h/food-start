@@ -1,4 +1,4 @@
-angular.module('app', ['app.search', 'app.recipes', 'app.ingredients', 'app.navBar', 'ngRoute'])
+angular.module('app', ['app.search', 'app.recipes', 'app.ingredients', 'app.navBar', 'ngRoute', 'angularGrid'])
 .config(function ($routeProvider, $httpProvider) {
   
   $httpProvider.defaults.headers.get = {'X-Mashape-Key': '4dGJ75wfGZmshHg96g2LjUoaqEsDp1cw7H3jsnG5dMs7RxDBa6'};

@@ -1,9 +1,13 @@
 <nav-bar></nav-bar>
 
 <div id='content'>
-  <div class='recipe' ng-repeat='recipe in storedRecipes'>
-    <p><a href={{recipe.f2f_url}}>{{recipe.title}}</a></p>
-    <img src={{recipe.image_url}}></img>
-    <input ng-click='removeFromList(this)' type='submit' value='Remove'></input>
+  <div id='recipeContainer'>
+    <ul class='dynamic-grid' angular-grid='storedRecipes' ag-grid-width='300' ag-gutter-size='10' ag-id='gallery' ag-refresh-on-img-load='false'>
+      <li data-ng-repeat='recipe in storedRecipes' class='grid'>
+        <a href={{recipe.f2f_url}}>{{recipe.title}}</a>
+        <img class='grid-img' src={{recipe.image_url}}></img>
+        <input ng-click='removeFromList(this)' type='submit' value='Remove'></input>
+      </li>
+    </ul>
   </div>
-</div>
+<div>

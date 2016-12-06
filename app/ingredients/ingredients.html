@@ -17,11 +17,12 @@
 
   
   <div id='fridge'>
-    <h3>KEEP YO FRIDGE STOCKED (^o^)</h3>
-    <div ng-repeat='ingredient in fridge'>
-      <p>{{ingredient.snippet}}</p>
-      <img src={{ingredient.link}}></img>
-      <input type='submit' ng-click='removeIngredient(this)' value='Take it Out!' name='saveIngredient'></input>
-    </div>
+    <ul class='dynamic-grid' angular-grid='fridge' ag-grid-width='300' ag-gutter-size='10' ag-id='gallery' ag-refresh-on-img-load='false'>
+      <li data-ng-repeat='ingredient in fridge' class='grid'>
+        <p>{{ingredient.snippet}}</p>
+        <img class='grid-img' src={{ingredient.link}}></img>
+        <input type='submit' ng-click='removeIngredient(this)' value='Remove from fridge' name='saveIngredient'></input>
+      </li>
+    </ul>
   </div>
 </div>

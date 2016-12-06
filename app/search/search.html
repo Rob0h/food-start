@@ -9,13 +9,15 @@
     </form>
   </div>
 
-  <div class='recipe' ng-repeat='recipe in recipes'>
-    <p><a href={{recipe.f2f_url}}>{{recipe.title}}</a></p>
-    <img src={{recipe.image_url}}></img>
-    
-    <form name='test'>
-      <input ng-click='saveForLater($event, this)' type='submit' value='Save for Later' name='saveRecipe'></input>
-    </form>
-    <span ng-show='test.$submitted'>Recipe Saved Successfully</span>  
+  <div id='recipeContainer'>
+    <ul class='dynamic-grid' angular-grid='recipes' ag-grid-width='300' ag-gutter-size='10' ag-id='gallery' ag-refresh-on-img-load='false'>
+      <li data-ng-repeat='recipe in recipes' class='grid'>
+        <a href={{recipe.f2f_url}}>{{recipe.title}}</a>
+        <img class='grid-img' src={{recipe.image_url}}></img>
+        <form name='test'>
+          <input ng-click='saveForLater($event, this)' type='submit' value='Save for Later' name='saveRecipe'></input>
+          <span ng-show='test.$submitted'>Recipe Saved Successfully</span>  
+        </form>
+      </li>
+    </ul>
   </div>
-</div>

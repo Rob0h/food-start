@@ -1,13 +1,27 @@
-#recipe {
-  display: inline-block;
+.grid {
+    border: 1px solid #cccccc;
+    list-style: none;
+    background: #ffffff;
+    box-sizing: border-box;
+    -moz-box-sizing : border-box;
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
 }
-img {
-  width: 100px;
-  height: 100px;
+.grid-img {
+    width: 100%;
+    vertical-align: middle;
+    -webkit-transition: opacity 0.2s ease-out;
+    transition: opacity 0.2s ease-out;
+    background-color: #fff;
+    opacity: 0;
+    visibility: hidden;
 }
-#fridge {
-  float: right;
+ 
+.grid-img.img-loaded{
+    visibility: visible;
+    opacity: 1;
 }
+
 #content {
   margin-top: 10px;
   padding: 50px 15px 0px 15px;
