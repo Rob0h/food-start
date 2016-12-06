@@ -1,7 +1,24 @@
 <div>
-  <a href='#/'>Home</a>
-  <a href='#/recipes'>Recipes</a>
-  <a href='#/ingredients'>Ingredients</a>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#/search">Food Start</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#/search">Home</a></li>
+        <li><a href="#/recipes">Recipes</a></li>
+        <li><a href="#/ingredients">Ingredients</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
 
 <form ng-submit='findRecipes()' name='locInputForm'>
   <input ng-model='inputFood' class='text' type='text' placeholder='Search Recipes' required>
@@ -18,5 +35,3 @@
   <span ng-show='test.$submitted'>Recipe Saved Successfully</span>
   
 </div>
-
-<div>

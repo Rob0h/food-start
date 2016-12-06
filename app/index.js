@@ -15,5 +15,9 @@ angular.module('app', ['app.search', 'app.recipes', 'app.ingredients', 'ngRoute'
     .when('/ingredients', {
       templateUrl: 'app/ingredients/ingredients.html',
       controller: 'IngredientsController',
+    })
+    .when('/search', {
+      templateUrl: 'app/search/search.html',
+      controller: 'SearchController',
     });
 });
