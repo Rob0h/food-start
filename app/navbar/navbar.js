@@ -4,10 +4,29 @@ appNavBar.directive("navBar", function() {
     restrict: "E",
     replace: true,
     transclude: true,
+    scope: true,
     templateUrl: "/app/navbar/navbar.html",
+    controller: "navBarCtrl",
   }});
 
-appNavBar.directive('bsActiveLink', ['$location', function ($location) {
+appNavBar.controller('navBarCtrl', function($scope) {
+  $scope.redAlert = false;
+  $scope.login = function() {
+    console.log($scope.username);
+    console.log($scope.password);
+    if($scope.username !== 'asdf' && $scope.password !== 'asdf') {
+      $scope.redAlert = true;
+    }
+  }
+  $scope.removeAlert = function() {
+    $scope.redAlert = false;
+  }
+});
+
+
+
+//???????????????????????????????
+/*appNavBar.directive('bsActiveLink', ['$location', function ($location) {
   return {
     restrict: 'A', //use as attribute 
     replace: false,
@@ -29,3 +48,4 @@ appNavBar.directive('bsActiveLink', ['$location', function ($location) {
     }
   }
 }]);
+*/

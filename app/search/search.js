@@ -6,14 +6,11 @@ angular.module('app.search', [])
     .then(function(recipes) {
       $scope.recipes = recipes;
     });
-    
-    //STATIC DATA REMOVE
-    //$scope.recipes = exampleData.recipes;
   }
 
   //STATIC DATA REMOVE
   //$scope.findRecipes();
-  //$scope.recipes = homeData.recipes;
+  $scope.recipes = homeData.recipes;
 
 
   $scope.saveForLater = function(event, context) {

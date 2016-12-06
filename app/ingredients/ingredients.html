@@ -26,7 +26,7 @@
       <li data-ng-repeat='ingredient in fridge' class='grid'>
         <p>{{ingredient.snippet}}</p>
         <img class='grid-img' src={{ingredient.link}}></img>
-        <input type='submit' ng-click='removeIngredient(this)' value='Remove from fridge' name='saveIngredient'></input>
+        <input type='submit' ng-click='removeIngredient(this)' value='Remove' name='saveIngredient' class='btn btn-default btn-xs'></input>
       </li>
     </ul>
   </div>
