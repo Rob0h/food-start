@@ -13,7 +13,7 @@ appNavBar.controller('navBarCtrl', function($scope, $location) {
   $scope.redAlert = false;
   $scope.greenAlert = false;
 
-  $scope.login = function() {
+  $scope.loginUser = function() {
     console.log($scope.username);
     console.log($scope.password);
     if($scope.username !== 'asdf' || $scope.password !== 'asdf') {
@@ -28,7 +28,9 @@ appNavBar.controller('navBarCtrl', function($scope, $location) {
   $scope.removeGreenAlert = function() {
     $scope.greenAlert = false;
   }
-
+  $scope.doSomething = function() {
+    console.log('doing something');
+  }
   // non-ideal implementation
   $scope.isActive = function (viewLocation) {
      var active = (viewLocation === $location.path());
