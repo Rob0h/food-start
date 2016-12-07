@@ -15,6 +15,7 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
   $scope.greenAlert = false;
   $scope.signUpAlert = false;
   $scope.signUpFailure = false;
+  $scope.loggedIn = false;
 
   $scope.loginUser = function() {
     var user = {
@@ -29,12 +30,17 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
     }).then(function(res) {
       console.log(res);
       if (res.data) {
-        console.log('user logged insuccessfully');
+        console.log('user logged in successfully');
         $scope.greenAlert = true;
+        $scope.loggedIn = true;
       } else {
         $scope.redAlert = true;
       }
     })
+  }
+
+  $scope.logOut = function() {
+    $scope.loggedIn = false;
   }
 
   $scope.signUpUser = function() {
