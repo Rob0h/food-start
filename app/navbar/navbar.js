@@ -16,6 +16,7 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
   $scope.signUpAlert = false;
   $scope.signUpFailure = false;
   $scope.loggedIn = false;
+  $scope.logOutAlert = false;
 
   $scope.loginUser = function() {
     var user = {
@@ -41,6 +42,7 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
 
   $scope.logOut = function() {
     $scope.loggedIn = false;
+    $scope.logOutAlert = true;
   }
 
   $scope.signUpUser = function() {
@@ -65,6 +67,7 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
     })
   }
 
+  // non-ideal implementation
   $scope.removeRedAlert = function() {
     $scope.redAlert = false;
   }
@@ -77,6 +80,10 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
   $scope.removeFailureAlert = function() {
     $scope.signUpFailure = false;
   }
+  $scope.removeLogOutAlert = function() {
+    $scope.logOutAlert = false;
+  }
+
   // non-ideal implementation
   $scope.isActive = function (viewLocation) {
      var active = (viewLocation === $location.path());
