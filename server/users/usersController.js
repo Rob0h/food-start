@@ -2,6 +2,7 @@ var User = require('./users.js');
 
 module.exports = {
 
+  // Logs in user
   loginUser: function(user) {
     var user = new User({
       username: user.username,
@@ -18,6 +19,8 @@ module.exports = {
       }
     })
   },
+
+  // Registers new user to db
   addUser: function(user) {
     var newUser = new User({
       username: user.username,

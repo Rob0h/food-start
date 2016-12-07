@@ -3,6 +3,8 @@ angular.module('app', ['app.search', 'app.recipes', 'app.ingredients', 'app.navB
   
   $httpProvider.defaults.headers.get = {'X-Mashape-Key': '4dGJ75wfGZmshHg96g2LjUoaqEsDp1cw7H3jsnG5dMs7RxDBa6'};
 
+  // FUTURE IMPROVEMENTS
+  // Add authentication gating between routes
   $routeProvider
     .when('/', {
       templateUrl: 'app/search/search.html',

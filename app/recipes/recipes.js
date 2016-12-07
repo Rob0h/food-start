@@ -1,6 +1,7 @@
 angular.module('app.recipes', [])
 .controller('RecipesController', function($scope, $http) {
 
+  // Retrieves all saved recipes in the db
   $scope.getAllRecipes = function() {
     $http({
       method: 'GET',
@@ -16,6 +17,7 @@ angular.module('app.recipes', [])
 
   $scope.getAllRecipes();
 
+  // Removes the selected recipe from the db
   $scope.removeFromList = function(context) {
     var self = this;
     console.log('removing', context.recipe);

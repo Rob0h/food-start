@@ -2,6 +2,7 @@ var Recipe = require('./recipes.js');
 
 module.exports = {
 
+  // Adds recipe to db
   addRecipe: function(recipe) {
     var newRecipe = new Recipe({
       title: recipe.title,
@@ -14,6 +15,7 @@ module.exports = {
     });
   },
 
+  // Returns all recipes from db
   getRecipes: function(req, res) {
     Recipe.find()
     .then(function(found) {
@@ -21,6 +23,7 @@ module.exports = {
     });
   },
 
+  // Removes recipe from db
   removeRecipe: function(recipe) {
     return Recipe.remove({_id: recipe._id});
   }

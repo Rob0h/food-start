@@ -2,12 +2,14 @@ angular.module('app.ingredients', [])
 .controller('IngredientsController', function($scope, $http, recipeFactory) {
   $scope.searchedIngredient = null;
 
+  // Queries google image search for image of ingredient
   $scope.findIngredient = function() {
     var q = $scope.inputIngredient;
+    var key = window.GS_API_KEY;
     return $http({
       method: 'GET',
       dataType: 'json',
-      url: 'https://www.googleapis.com/customsearch/v1?cx=009407302250325958776:7xs2zpwdaho&imgSize=medium&key=AIzaSyCA-Jl3awY6NWedMUb6_Ey6DzRphlPtJjw&q=' + q + '&searchType=image'
+      url: 'https://www.googleapis.com/customsearch/v1?cx=009407302250325958776:7xs2zpwdaho&imgSize=medium&key=' + key + '&q=' + q + '&searchType=image'
     })
     .then(function(res) {
       console.log(res);
@@ -18,6 +20,7 @@ angular.module('app.ingredients', [])
     })
   }
 
+  // Returns db contents of ingredients
   $scope.getFridge = function() {
     return $http({
       method: 'GET',
@@ -32,6 +35,7 @@ angular.module('app.ingredients', [])
 
   $scope.getFridge();
 
+  // Adds ingredient to ingredient db
   $scope.addIngredient = function() {
     var newIngredient = {
       snippet: $scope.inputIngredient,
@@ -48,6 +52,7 @@ angular.module('app.ingredients', [])
     });
   }
 
+  // Removes ingredient from ingredient db
   $scope.removeIngredient = function(context) {
     return $http({
       method: 'POST',
@@ -62,6 +67,7 @@ angular.module('app.ingredients', [])
     });
   }
 
+  // Joins the available fridge ingredients together and queries F2F
   $scope.findFridgeRecipe = function() {
     var joinedFridgeString = '';
     $scope.fridge.forEach(function(ingredient, i) {
@@ -76,6 +82,7 @@ angular.module('app.ingredients', [])
     })
   }
 
+  // Saves recipe, similar to in search.js
   $scope.saveLater = function(context) {
     console.log('clicked on', context);
     var recipe = {

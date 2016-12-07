@@ -11,6 +11,8 @@ appNavBar.directive("navBar", function() {
 
 appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
 
+  // FUTURE IMPROVEMENT- logged in view does not persist when page is changed
+  // Sets all alerts to false (no-view)
   $scope.redAlert = false;
   $scope.greenAlert = false;
   $scope.signUpAlert = false;
@@ -18,6 +20,7 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
   $scope.loggedIn = false;
   $scope.logOutAlert = false;
 
+  // Logs in user
   $scope.loginUser = function() {
     var user = {
       username: $scope.username,
@@ -39,11 +42,15 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
     })
   }
 
+  // FUTURE IMPROVEMENT - implement token add/remove system 
+  // Currently sets interface to allow log in
   $scope.logOut = function() {
     $scope.loggedIn = false;
     $scope.logOutAlert = true;
   }
 
+  // FUTURE IMPROVEMENT - hash password client side to increase security
+  // Registers new user and prevents users with the same username to register
   $scope.signUpUser = function() {
     // password being saved in plain text
     var newUser = {
@@ -65,7 +72,7 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
     })
   }
 
-  // non-ideal implementation
+  // non-ideal implementation - could be improved with further research into ng-if
   $scope.removeRedAlert = function() {
     $scope.redAlert = false;
   }

@@ -1,6 +1,7 @@
 angular.module('app.services', [])
 .factory('recipeFactory', function($http) {
 
+  // Factory function that queries F2F for recipes
   var findRecipes = function(query) {
     var key = window.F2F_API_KEY;
     var q = query;
@@ -26,6 +27,7 @@ angular.module('app.services', [])
     });
   };
 
+  // Factory function that saves recipe to db
   var saveLater = function(recipe) {
     return $http({
       method: 'POST',

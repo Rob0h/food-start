@@ -1,1 +1,2 @@
 window.F2F_API_KEY = '582cb61e55be53bc0e54978560324746';
+window.GS_API_KEY = 'AIzaSyCA-Jl3awY6NWedMUb6_Ey6DzRphlPtJjw';

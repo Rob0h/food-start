@@ -1,6 +1,7 @@
 angular.module('app.search', [])
 .controller('SearchController', function($scope, $http, recipeFactory) {
 
+  // Uses recipeFactory to query F2F for recipes
   $scope.findRecipes = function() {
     recipeFactory.findRecipes($scope.inputFood)
     .then(function(recipes) {
@@ -8,6 +9,7 @@ angular.module('app.search', [])
     });
   }
 
+  // Uses recipeFactory to save recipe to db
   $scope.saveLater = function(context) {
     console.log('clicked on', context);
     var recipe = {
@@ -16,12 +18,6 @@ angular.module('app.search', [])
       image_url: context.recipe.image_url,
     }
     recipeFactory.saveLater(recipe);
-  }
-
-  $scope.test = function(context) {
-    console.log(context);
-    console.log(context.$parent.show);
-    $scope.show = !$scope.show;
   }
 
   // Fill with live data when no data has been searched for
