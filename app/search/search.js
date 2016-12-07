@@ -8,11 +8,6 @@ angular.module('app.search', [])
     });
   }
 
-  //STATIC DATA REMOVE
-  //$scope.findRecipes();
-  $scope.recipes = homeData.recipes;
-
-
   $scope.saveLater = function(context) {
     console.log('clicked on', context);
     var recipe = {
@@ -38,6 +33,12 @@ angular.module('app.search', [])
     console.log(context);
     console.log(context.$parent.show);
     $scope.show = !$scope.show;
+  }
+
+  // Fill with live data when no data has been searched for
+  // MUST BE AFTER FUNCTIONS - not hoisting to the top
+  if (!$scope.recipes) {
+    $scope.findRecipes();
   }
 
 });
