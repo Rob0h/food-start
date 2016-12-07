@@ -29,7 +29,6 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
       data: user,
       url: 'http://localhost:1337/login'
     }).then(function(res) {
-      console.log(res);
       if (res.data) {
         console.log('user logged in successfully');
         $scope.greenAlert = true;
@@ -57,7 +56,6 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
       data: newUser,
       url: 'http://localhost:1337/signUp'
     }).then(function(res) {
-      console.log(res);
       if (res.data) {
         console.log('user saved successfully');
         $scope.signUpAlert = true;
