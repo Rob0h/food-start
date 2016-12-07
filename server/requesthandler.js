@@ -59,8 +59,15 @@ module.exports = function(app, express) {
   });
 
   // user logic
-  app.post('/login', function(req, res) {
+  app.post('/signUp', function(req, res) {
     usersController.addUser(req.body)
+    .then(function(result) {
+      console.log(result);
+      res.send(result);
+    })
+  })
+    app.post('/login', function(req, res) {
+    usersController.loginUser(req.body)
     .then(function(result) {
       console.log(result);
       res.send(result);

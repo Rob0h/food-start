@@ -14,16 +14,27 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
   $scope.redAlert = false;
   $scope.greenAlert = false;
   $scope.signUpAlert = false;
-  $scope.signUpFailure = true;
+  $scope.signUpFailure = false;
 
   $scope.loginUser = function() {
-    console.log($scope.username);
-    console.log($scope.password);
-    if($scope.username !== 'asdf' || $scope.password !== 'asdf') {
-      $scope.redAlert = true;
-    } else {
-      $scope.greenAlert = true;
+    var user = {
+      username: $scope.username,
+      password: $scope.password,
     }
+    return $http({
+      method: 'POST',
+      dataType: 'json',
+      data: user,
+      url: 'http://localhost:1337/login'
+    }).then(function(res) {
+      console.log(res);
+      if (res.data) {
+        console.log('user logged insuccessfully');
+        $scope.greenAlert = true;
+      } else {
+        $scope.redAlert = true;
+      }
+    })
   }
 
   $scope.signUpUser = function() {
@@ -36,7 +47,7 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
       method: 'POST',
       dataType: 'json',
       data: newUser,
-      url: 'http://localhost:1337/login'
+      url: 'http://localhost:1337/signUp'
     }).then(function(res) {
       console.log(res);
       if (res.data) {

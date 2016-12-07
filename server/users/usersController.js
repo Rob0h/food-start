@@ -2,6 +2,22 @@ var User = require('./users.js');
 
 module.exports = {
 
+  loginUser: function(user) {
+    var user = new User({
+      username: user.username,
+      password: user.password,
+    });
+    return User.find({username: user.username})
+    .then(function(found) {
+      if(found.length > 0) {
+        if(found[0].password === user.password) {
+          return true;
+        }
+      } else {
+        return false;
+      }
+    })
+  },
   addUser: function(user) {
     var newUser = new User({
       username: user.username,
