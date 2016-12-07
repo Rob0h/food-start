@@ -15,18 +15,7 @@ angular.module('app.search', [])
       f2f_url: context.recipe.f2f_url,
       image_url: context.recipe.image_url,
     }
-    return $http({
-      method: 'POST',
-      dataType: 'json',
-      data: recipe,
-      url: 'http://localhost:1337/addRecipe',
-    })
-    .then(function(res) {
-      console.log('getting here');
-      $scope.show = !$scope.show;
-    }, function(err) {
-      console.log(err);
-    });
+    recipeFactory.saveLater(recipe);
   }
 
   $scope.test = function(context) {

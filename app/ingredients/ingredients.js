@@ -75,4 +75,14 @@ angular.module('app.ingredients', [])
       $scope.recipes = recipes;
     })
   }
+
+  $scope.saveLater = function(context) {
+    console.log('clicked on', context);
+    var recipe = {
+      title: context.recipe.title,
+      f2f_url: context.recipe.f2f_url,
+      image_url: context.recipe.image_url,
+    }
+    recipeFactory.saveLater(recipe);
+  }
 });

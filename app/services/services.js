@@ -24,9 +24,25 @@ angular.module('app.services', [])
     }, function(err) {
       console.log(err);
     });
-  }
+  };
+
+  var saveLater = function(recipe) {
+    return $http({
+      method: 'POST',
+      dataType: 'json',
+      data: recipe,
+      url: 'http://localhost:1337/addRecipe',
+    })
+    .then(function(res) {
+      console.log('getting here');
+      $scope.show = !$scope.show;
+    }, function(err) {
+      console.log(err);
+    });
+  };
 
   return {
-    findRecipes: findRecipes
+    findRecipes: findRecipes,
+    saveLater: saveLater
   }
 })

@@ -40,7 +40,7 @@
         <a href={{recipe.f2f_url}}>{{recipe.title}}</a>
         <img class='grid-img' src={{recipe.image_url}}></img>
         <form name='saveForLater'>
-          <input ng-click='saveForLater($event, this)' type='submit' value='Save Recipe' name='saveRecipe' class='btn btn-default btn-xs'></input>
+          <input ng-click='saveLater(this)' type='submit' value='Save Recipe' name='saveRecipe' class='btn btn-default btn-xs'></input>
           <span ng-show='saveForLater.$submitted'>Recipe Saved Successfully</span>  
         </form>
       </li>
