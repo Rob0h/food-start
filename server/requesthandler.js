@@ -6,6 +6,7 @@ var recipesController = require('./recipes/recipesController.js')
 var ingredientsController = require('./ingredients/ingredientsController.js')
 var usersController = require('./users/usersController.js');
 
+
 module.exports = function(app, express) {
   // test if this is still needed
   app.use(cors());
@@ -63,6 +64,6 @@ module.exports = function(app, express) {
     .then(function(result) {
       console.log(result);
       res.send(result);
-    });
+    })
   })
 }

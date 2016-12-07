@@ -22,13 +22,15 @@
         <input ng-model="password" type="password" class="form-control" placeholder="Password" required>
       </div>
       <button ng-disabled='!login.$valid' ng-click="loginUser()" type="submit" class="btn btn-default">Login</button>
-      
+
       <button ng-disabled='!login.$valid' ng-click="signUpUser()" type="submit" class="btn btn-default">Sign Up</button>
     </form>
     </div><!--/.nav-collapse -->
     <div id='alerts'>
       <red-alert ng-click="removeRedAlert()" ng-show="redAlert"></red-alert>
       <green-alert ng-click="removeGreenAlert()" ng-show="greenAlert"></green-alert>
+      <sign-up-success ng-click="removeSuccessAlert()" ng-show="signUpAlert"></sign-up-success>
+      <sign-up-failure ng-click="removeFailureAlert()" ng-show="signUpFailure"></sign-up-failure>
     </div>
   </div>
 </nav>

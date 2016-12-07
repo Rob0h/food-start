@@ -10,8 +10,11 @@ appNavBar.directive("navBar", function() {
   }});
 
 appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
+
   $scope.redAlert = false;
   $scope.greenAlert = false;
+  $scope.signUpAlert = false;
+  $scope.signUpFailure = true;
 
   $scope.loginUser = function() {
     console.log($scope.username);
@@ -35,8 +38,12 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
       data: newUser,
       url: 'http://localhost:1337/login'
     }).then(function(res) {
-      if (res.status === 200) {
+      console.log(res);
+      if (res.data) {
         console.log('user saved successfully');
+        $scope.signUpAlert = true;
+      } else {
+        $scope.signUpFailure = true;
       }
     })
   }
@@ -47,7 +54,12 @@ appNavBar.controller('navBarCtrl', function($scope, $location, $http) {
   $scope.removeGreenAlert = function() {
     $scope.greenAlert = false;
   }
-
+  $scope.removeSuccessAlert = function() {
+    $scope.signUpAlert = false;
+  }
+  $scope.removeFailureAlert = function() {
+    $scope.signUpFailure = false;
+  }
   // non-ideal implementation
   $scope.isActive = function (viewLocation) {
      var active = (viewLocation === $location.path());
