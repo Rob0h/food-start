@@ -1,2 +1,2 @@
-#mvp
-This is a project I completed as a student at [hackreactor](http://hackreactor.com). This project was worked on with a pair.
+#Food Start
+An application built using the food2fork API to search and save recipes based on user tastes/preferences.
